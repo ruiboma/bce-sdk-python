@@ -148,10 +148,10 @@ def send_request(
     user_agent = compat.convert_to_bytes(user_agent)
     headers[http_headers.USER_AGENT] = user_agent
 
+    headers[http_headers.BCE_DATE] = utils.get_canonical_time(timestamp=1742278581)
     should_get_new_date = False
     if http_headers.BCE_DATE not in headers:
         should_get_new_date = True
-
     request_endpoint = config.endpoint
     if use_backup_endpoint:
         request_endpoint = config.backup_endpoint
