@@ -53,7 +53,7 @@ def sign(credentials, http_method, path, headers, params,
     """
     Create the authorization
     """
-    timestamp = 1742278581
+    # timestamp = 1742278581
     _logger.debug('Sign params: %s %s %s %s %d %d %s' % (
         http_method, path, headers, params, timestamp, expiration_in_seconds, headers_to_sign))
     headers = headers or {}
@@ -89,6 +89,8 @@ def sign(credentials, http_method, path, headers, params,
         result = b'%s/%s/%s' % (sign_key_info, (b';').join(headers_to_sign), sign_result)
     else:
         result = b'%s//%s' % (sign_key_info, sign_result)
+
+    print(f"res-{result}-")
 
     _logger.debug('sign_key=[%s] sign_string=[%d bytes][ %s ]' %
                   (sign_key, len(string_to_sign), string_to_sign))

@@ -147,8 +147,8 @@ def send_request(
     user_agent = user_agent.replace('\n', '')
     user_agent = compat.convert_to_bytes(user_agent)
     headers[http_headers.USER_AGENT] = user_agent
-
-    headers[http_headers.BCE_DATE] = utils.get_canonical_time(timestamp=1742278581)
+    context_time = int(time.time())
+    headers[http_headers.BCE_DATE] = utils.get_canonical_time(timestamp=context_time)
     should_get_new_date = False
     if http_headers.BCE_DATE not in headers:
         should_get_new_date = True
@@ -178,7 +178,7 @@ def send_request(
         headers[http_headers.HOST] += b':' + compat.convert_to_bytes(port)
 
     headers[http_headers.AUTHORIZATION] = sign_function(
-        config.credentials, http_method, path, headers, params)
+        config.credentials, http_method, path, headers, params, timestamp=context_time)
 
     encoded_params = utils.get_canonical_querystring(params, False)
     if len(encoded_params) > 0:
