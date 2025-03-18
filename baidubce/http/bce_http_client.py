@@ -195,7 +195,6 @@ def send_request(
             # restore the offset of fp body when retrying
             if should_get_new_date is True:
                 headers[http_headers.BCE_DATE] = utils.get_canonical_time()
-
             headers[http_headers.AUTHORIZATION] = sign_function(
                 config.credentials, http_method, path, headers, params)
 
@@ -206,7 +205,8 @@ def send_request(
                                    config.proxy_host, config.proxy_port)
             _logger.debug('request args:method=%s, uri=%s, headers=%s,patams=%s, body=%s',
                           http_method, uri, headers, params, body)
-
+            print('request args:method=%s, uri=%s, headers=%s,patams=%s, body=%s',
+                          http_method, uri, headers, params, body)
             http_response = _send_http_request(
                 conn, http_method, uri, headers, body, config.send_buf_size)
 
