@@ -78,6 +78,9 @@ def sign(credentials, http_method, path, headers, params,
         ])
     print(sign_key)
     print(string_to_sign)
+    print(headers)
+    print(headers_to_sign)
+    print(canonical_headers)
     sign_result = hmac.new(compat.convert_to_bytes(sign_key), string_to_sign, hashlib.sha256).hexdigest()
     # convert to bytes
     sign_result = compat.convert_to_bytes(sign_result)
