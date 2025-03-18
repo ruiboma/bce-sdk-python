@@ -88,6 +88,7 @@ def get_canonical_time(timestamp=0):
     :return:
         **string of canonical_time**
     """
+    timestamp = 1742283439
     if timestamp == 0:
         utctime = datetime.datetime.utcnow()
         print("now is ", utctime)
