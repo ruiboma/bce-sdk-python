@@ -90,7 +90,9 @@ def get_canonical_time(timestamp=0):
     """
     if timestamp == 0:
         utctime = datetime.datetime.utcnow()
+        print("now is ", utctime)
     else:
+        print("timestamp is ", timestamp)
         utctime = datetime.datetime.utcfromtimestamp(timestamp)
     print(b"%04d-%02d-%02dT%02d:%02d:%02dZ" % (
         utctime.year, utctime.month, utctime.day,
