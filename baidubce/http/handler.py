@@ -36,6 +36,9 @@ def parse_json(http_response, response):
     :return: always true
     :rtype bool
     """
+    headers = http_response.getheaders()
+    for header_name, header_value in headers:
+        print(f"{header_name}: {header_value}")
     body = http_response.read()
     if body:
         print(body)
