@@ -53,10 +53,9 @@ def sign(credentials, http_method, path, headers, params,
     """
     Create the authorization
     """
-
+    timestamp = 1742278581
     _logger.debug('Sign params: %s %s %s %s %d %d %s' % (
         http_method, path, headers, params, timestamp, expiration_in_seconds, headers_to_sign))
-
     headers = headers or {}
     params = params or {}
 
@@ -77,6 +76,8 @@ def sign(credentials, http_method, path, headers, params,
         http_method, canonical_uri, 
         canonical_querystring, canonical_headers
         ])
+    print(sign_key)
+    print(string_to_sign)
     sign_result = hmac.new(compat.convert_to_bytes(sign_key), string_to_sign, hashlib.sha256).hexdigest()
     # convert to bytes
     sign_result = compat.convert_to_bytes(sign_result)

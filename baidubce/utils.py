@@ -92,6 +92,9 @@ def get_canonical_time(timestamp=0):
         utctime = datetime.datetime.utcnow()
     else:
         utctime = datetime.datetime.utcfromtimestamp(timestamp)
+    print(b"%04d-%02d-%02dT%02d:%02d:%02dZ" % (
+        utctime.year, utctime.month, utctime.day,
+        utctime.hour, utctime.minute, utctime.second))
     return b"%04d-%02d-%02dT%02d:%02d:%02dZ" % (
         utctime.year, utctime.month, utctime.day,
         utctime.hour, utctime.minute, utctime.second)
