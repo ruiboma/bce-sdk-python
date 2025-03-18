@@ -146,7 +146,7 @@ def send_request(
         compat.convert_to_string(baidubce.SDK_VERSION), sys.version, sys.platform)
     user_agent = user_agent.replace('\n', '')
     user_agent = compat.convert_to_bytes(user_agent)
-    headers[http_headers.USER_AGENT] = user_agent
+    headers[http_headers.USER_AGENT] = b'bce-sdk-python/0.9.29/3.9.6 (default, Feb  3 2024, 15:58:27) [Clang 15.0.0 (clang-1500.3.9.4)]/darwin'
     context_time = int(time.time())
     headers[http_headers.BCE_DATE] = utils.get_canonical_time(timestamp=context_time)
     should_get_new_date = False
